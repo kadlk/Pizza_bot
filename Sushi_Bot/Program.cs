@@ -39,9 +39,9 @@ namespace PizzaBot
             {
                 Logger.Log(Logger.Level.Debug, "Making order");
                 Messages.Greetings();
-                List<Customer> customer = new List<Customer>();
-                customer.Add(new Customer() { Name = Console.ReadLine() });
-                TimeOfDay.GreetingsTimeOfDay(customer[customer.Count - 1]);
+                List<Customer> customers = new List<Customer>();
+                customers.Add(new Customer() { Name = Console.ReadLine() });
+                TimeOfDay.GreetingsTimeOfDay(customers[customers.Count - 1]);
 
                 Json.Serializing(Json.settings, @"menu.JSON");
                 List<Food> deserializedFood = new List<Food>();
@@ -53,11 +53,11 @@ namespace PizzaBot
 
                 MailSender.SendEmailAsync(foodInCarts).GetAwaiter();
                 Console.WriteLine("Input your delivery adress");
-                customer[customer.Count - 1].Adress = Console.ReadLine();
-                customer[customer.Count - 1].Email = MailSender.email;
-                customer[customer.Count - 1].OrderDate = DateTime.Now.ToLocalTime();
-                customer[customer.Count - 1].Order = FoodInCart.CheckSummaryToString(foodInCarts);
-                Json.SerializingCustomer(Json.settings, "Orders.Json", customer[customer.Count - 1]);
+                customers[customers.Count - 1].Adress = Console.ReadLine();
+                customers[customers.Count - 1].Email = MailSender.email;
+                customers[customers.Count - 1].OrderDate = DateTime.Now.ToLocalTime();
+                customers[customers.Count - 1].Order = FoodInCart.CheckSummaryToString(foodInCarts);
+                Json.SerializingCustomer(Json.settings, "Orders.Json", customers[customers.Count - 1]);
             }
         }
     }
