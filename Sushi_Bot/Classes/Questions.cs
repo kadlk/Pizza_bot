@@ -10,8 +10,6 @@ namespace PizzaBot.Classes
     {
         public static void ChoosingFromMenu(List<Food> deserializedFood, List<FoodInCart> foodInCarts)
         {
-            Logger logger = new Logger();
-            logger.Log(Logger.Level.Error, "MESSAGE");
             string inputYesNo = "YES";
             while (inputYesNo.Equals("YES", StringComparison.OrdinalIgnoreCase))
             {

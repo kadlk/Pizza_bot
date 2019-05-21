@@ -16,7 +16,7 @@ namespace PizzaBot.Classes
             Error
         }
 
-        public void Log(Level level, string message)
+        public static void Log(Level level, string message)
         {
             string dateTimeLog = DateTime.Now.ToString("yyyyMMdd");
             if (!File.Exists($"log {dateTimeLog}_0.txt"))
@@ -40,7 +40,7 @@ namespace PizzaBot.Classes
             string nameLog = $"log {dateTimeLog}_{counter}.txt";
             string threadCurrent = Thread.CurrentThread.ManagedThreadId.ToString();
             string nameNamespace = System.Reflection.Assembly.GetExecutingAssembly().EntryPoint.DeclaringType.Namespace.ToString();
-            string methodName = new System.Diagnostics.StackTrace().GetFrame(2).GetMethod().Name;
+            string methodName = new System.Diagnostics.StackTrace().GetFrame(1).GetMethod().Name;
             messageToFile = $" {dateTimeTxt} {level} \tLog calls from namespace {nameNamespace}. The method is {methodName}. Message: {message} Thread is {threadCurrent}";
             string filePath = $@"{nameLog}";
             long size = 0;
@@ -70,6 +70,7 @@ namespace PizzaBot.Classes
                     writer.WriteLine(messageToFile);
                 }
             }
+
         }
     }
 }

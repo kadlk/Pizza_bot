@@ -14,6 +14,7 @@ namespace PizzaBot
     {
         static void Main(string[] args)
         {
+            Logger.Log(Logger.Level.Info, "Info");
             Console.WriteLine($"Hello, it is {DateTime.Now.ToString("HH:mm")} o`clock. \nNice to hear you.\n\nWhat is your name?");
             Customer customer = new Customer();
             customer.Name = Console.ReadLine();
