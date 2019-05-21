@@ -8,8 +8,11 @@ namespace PizzaBot.Classes
 {
     class Questions
     {
+        public static string inputYesNo;
         public static void ChoosingFromMenu(List<Food> deserializedFood, List<FoodInCart> foodInCarts)
         {
+            Logger.Log(Logger.Level.Info, "Asking questions");
+
             string inputYesNo = "YES";
             while (inputYesNo.Equals("YES", StringComparison.OrdinalIgnoreCase))
             {
@@ -50,6 +53,7 @@ namespace PizzaBot.Classes
         {
             FoodInCart foodInCart = new FoodInCart(deserializedFood[positionChosen], quantity);
             foodInCarts.Add(foodInCart);
+            Logger.Log(Logger.Level.Info, "Adding food to cart.");
         }
     }
 }

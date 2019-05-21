@@ -70,6 +70,7 @@
     <Compile Include="Classes\Logger.cs" />
     <Compile Include="Classes\MailSender.cs" />
     <Compile Include="Classes\MailSenderException.cs" />
+    <Compile Include="Classes\Messages.cs" />
     <Compile Include="Classes\Questions.cs" />
     <Compile Include="Classes\TimeOfDay.cs" />
     <Compile Include="Program.cs" />

@@ -27,24 +27,22 @@ namespace PizzaBot.Classes
 
             string output = JsonConvert.SerializeObject(foods, settings);
             File.WriteAllText(path, output);
+            Logger.Log(Logger.Level.Debug, $"Serialazed products. To {path}");
         }
 
         public static List<Food> Deserealizing(JsonSerializerSettings settings, string path)
         {
             string jsonRead = System.IO.File.ReadAllText(path);
             List<Food> deserializedFood = JsonConvert.DeserializeObject<List<Food>>(jsonRead, settings);
+            Logger.Log(Logger.Level.Debug, $"Deserialazed products. From {path}");
             return deserializedFood;
         }
 
-        public static void ShowMenu(List<Food> foods)
+        public static void SerializingCustomer(JsonSerializerSettings settings, string path, Customer customer)
         {
-            int i = 0;
-            foreach (var item in foods)
-            {
-                string temp = item.ShowProduct();
-                Console.WriteLine($"{i}. {temp}");
-                i++;
-            }
+            string output = JsonConvert.SerializeObject(customer, settings);
+            File.AppendAllText(path, output + Environment.NewLine);
+            Logger.Log(Logger.Level.Debug, $"Serialazed products. To {path}");
         }
     }
 }

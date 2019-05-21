@@ -10,7 +10,6 @@ namespace PizzaBot.Classes
     {
         public MailSenderException(string message) : base(message)
         {
-
         }
     }
 }

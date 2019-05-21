@@ -40,8 +40,9 @@ namespace PizzaBot.Classes
             string nameLog = $"log {dateTimeLog}_{counter}.txt";
             string threadCurrent = Thread.CurrentThread.ManagedThreadId.ToString();
             string nameNamespace = System.Reflection.Assembly.GetExecutingAssembly().EntryPoint.DeclaringType.Namespace.ToString();
-            string methodName = new System.Diagnostics.StackTrace().GetFrame(1).GetMethod().Name;
-            messageToFile = $" {dateTimeTxt} {level} \tLog calls from namespace {nameNamespace}. The method is {methodName}. Message: {message} Thread is {threadCurrent}";
+            string methodName = new System.Diagnostics.StackTrace(true).GetFrame(1).GetMethod().Name;
+            int line = new System.Diagnostics.StackTrace(true).GetFrame(1).GetFileLineNumber();
+            messageToFile = $" {dateTimeTxt} {level} \tLog calls from namespace {nameNamespace}. The method is {methodName}. Message: {message} Thread is {threadCurrent} Line is {line}";
             string filePath = $@"{nameLog}";
             long size = 0;
 

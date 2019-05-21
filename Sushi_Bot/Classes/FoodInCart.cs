@@ -20,7 +20,7 @@ namespace PizzaBot.Classes
         public static void ShowCheckSummary(List<FoodInCart> foodInCart)
         {
             int summaryPrice = 0;
-            Console.WriteLine("Check summary :");
+            Console.WriteLine("\nCheck summary :");
             foreach (var item in foodInCart)
             {
                 Console.WriteLine($"{item.Item.Name} x{item.Quantity} = {item.Item.Price * item.Quantity}BYN");
@@ -29,12 +29,29 @@ namespace PizzaBot.Classes
             Console.WriteLine($"Total = {summaryPrice}BYN or {summaryPrice.ToDollars(2.09).ToString("#.##")}$");
         }
 
+        public static string CheckSummaryToEmail(List<FoodInCart> foodInCart)
+        {
+            string checkSummary;
+            int summaryPrice = 0;
+
+            checkSummary = "\nCheck summary :<br />";
+            foreach (var item in foodInCart)
+            {
+                checkSummary += $"\n{item.Item.Name} x{item.Quantity} = {item.Item.Price * item.Quantity}BYN<br />";
+                summaryPrice += item.Item.Price * item.Quantity;
+            }
+            checkSummary += $"\nTotal = {summaryPrice}BYN or {summaryPrice.ToDollars(2.09).ToString("#.##")}$";
+
+            return checkSummary;
+        }
+
+
         public static string CheckSummaryToString(List<FoodInCart> foodInCart)
         {
             string checkSummary;
             int summaryPrice = 0;
 
-            checkSummary = "Check summary :";
+            checkSummary = "\nCheck summary :";
             foreach (var item in foodInCart)
             {
                 checkSummary += $"\n{item.Item.Name} x{item.Quantity} = {item.Item.Price * item.Quantity}BYN";

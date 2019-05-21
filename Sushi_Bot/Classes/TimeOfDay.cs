@@ -24,6 +24,7 @@ namespace PizzaBot.Classes
             else if (DateTime.Now.Hour > 18 && DateTime.Now.Hour <= 24) timeOfDay = DayTime.Evening;
             else if (DateTime.Now.Hour > 0 && DateTime.Now.Hour <= 7) timeOfDay = DayTime.Night;
             Console.WriteLine($"Good {timeOfDay} {customer.Name}");
+            Logger.Log(Logger.Level.Debug, $"Email sending. Txt: now is {DateTime.Now} and we say: {timeOfDay}");
         }
     }
 

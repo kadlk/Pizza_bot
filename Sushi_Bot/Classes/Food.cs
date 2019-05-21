@@ -18,6 +18,7 @@ namespace PizzaBot.Classes
 
         public static void ShowMenu(List<Food> foods)
         {
+            Console.WriteLine("\nOur menu today :");
             int i = 1;
             foreach (var item in foods)
             {
@@ -64,4 +65,6 @@ namespace PizzaBot.Classes
             Milliliters = milliliters;
         }
     }
+
+
 }
