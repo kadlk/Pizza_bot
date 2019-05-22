@@ -52,6 +52,7 @@ namespace PizzaBot
                 FoodInCart.ShowCheckSummary(foodInCarts);
 
                 MailSender.SendEmailAsync(foodInCarts).GetAwaiter();
+                MailSender.SendEmail(foodInCarts);
                 Console.WriteLine("Input your delivery adress");
                 customers[customers.Count - 1].Adress = Console.ReadLine();
                 customers[customers.Count - 1].Email = MailSender.email;

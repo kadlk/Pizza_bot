@@ -21,12 +21,25 @@ namespace PizzaBot.Classes
             _emailMessage += $"\n\n<br />Order was made : {_dateTime.ToShortDateString()} {_dateTime.ToShortTimeString()}";
             _emailMessage += $"\n<br />It will be delivered about : {_dateTime.AddMinutes(40).ToShortTimeString()}";
 
-            Console.WriteLine("\nYour email");
-            email = Console.ReadLine();
+            MailAddress to = new MailAddress("toGoNext@vadim.by");
+            bool IsValidEmail = false;
+            do
+            {
+                Console.WriteLine("Your email");
+                email = Console.ReadLine();
+                try
+                {
+                    to = new MailAddress(email);
+                    IsValidEmail = true;
+                }
+                catch
+                {
+                    Console.WriteLine("Wrong email");
+                }
 
+            } while (!IsValidEmail);
 
             MailAddress from = new MailAddress("mailforreg789@gmail.com", "MOE`S PUB");
-            MailAddress to = new MailAddress(email);
             MailMessage message = new MailMessage(from, to);
             message.Subject = "Your order";
             message.Body = _emailMessage;
@@ -45,11 +58,26 @@ namespace PizzaBot.Classes
             _emailMessage = FoodInCart.CheckSummaryToEmail(foodInCart);
             _emailMessage += $"\n\nOrder was made : {_dateTime.ToShortDateString()} {_dateTime.ToShortTimeString()}";
             _emailMessage += $"\nIt will be delivered about : {_dateTime.AddMinutes(40).ToShortTimeString()}";
-            Console.WriteLine("Your email");
-            email = Console.ReadLine();
+
+            MailAddress to = new MailAddress("toGoNext@vadim.by");
+            bool IsValidEmail = false;
+            do
+            {
+                Console.WriteLine("Your email");
+                email = Console.ReadLine();
+                try
+                {
+                    to = new MailAddress(email);
+                    IsValidEmail = true;
+                }
+                catch
+                {
+                    Console.WriteLine("Wrong email");
+                }
+
+            } while (!IsValidEmail);
 
             MailAddress from = new MailAddress("mailforreg789@gmail.com", "MOE`S PUB");
-            MailAddress to = new MailAddress(email);
             MailMessage message = new MailMessage(from, to);
             message.Subject = "Your order";
             message.Body = _emailMessage;
